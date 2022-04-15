@@ -1,8 +1,9 @@
 import { ReactElement, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { createTheme, ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material';
 
 import { selectTheme } from 'redux/theme/themeSlice';
+import { darkTheme, lightTheme } from 'common/theme';
 
 interface MyThemeProviderProps {
   children: ReactElement;
@@ -11,12 +12,7 @@ interface MyThemeProviderProps {
 export const MyThemeProvider = ({ children }: MyThemeProviderProps) => {
   const mode = useSelector(selectTheme);
   const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode
-        }
-      }),
+    () => (mode === 'dark' ? darkTheme : lightTheme),
     [mode]
   );
 

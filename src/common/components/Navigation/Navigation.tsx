@@ -67,11 +67,11 @@ export const Navigation = () => {
               }}
             >
               {guestRoutes.map((page) => (
-                <Link to={page.path || ''}>
-                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Link to={page.path || ''}>
                     <Typography textAlign="center">{page.name}</Typography>
-                  </MenuItem>
-                </Link>
+                  </Link>
+                </MenuItem>
               ))}
             </Menu>
           </Box>
@@ -85,13 +85,14 @@ export const Navigation = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {guestRoutes.map((page) => (
-              <Button
-                key={page.name}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page.name}
-              </Button>
+              <Link key={page.name} to={page.path || ''}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.name}
+                </Button>
+              </Link>
             ))}
           </Box>
 

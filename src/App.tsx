@@ -6,12 +6,14 @@ import Routing from 'routes/Routing';
 import { MyThemeProvider } from 'common/components';
 
 import 'common/styles/global.css';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   return (
     <ReduxProvider store={store}>
       <MyThemeProvider>
         <Router>
+          <CssBaseline />
           <Routing />
         </Router>
       </MyThemeProvider>

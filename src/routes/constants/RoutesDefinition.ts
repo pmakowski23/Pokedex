@@ -1,3 +1,4 @@
 export enum RoutesDefinition {
-  landing = '/'
+  landing = '/',
+  fight = '/fight'
 }

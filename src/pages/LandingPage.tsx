@@ -47,6 +47,7 @@ export const LandingPage = () => {
   return (
     <>
       <Grid
+        component="main"
         container
         justifyContent="center"
         spacing={2}
