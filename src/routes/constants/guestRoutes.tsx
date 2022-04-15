@@ -2,8 +2,10 @@ import { RouteProps } from 'react-router-dom';
 import { RoutesDefinition } from './RoutesDefinition';
 
 import { LandingPage } from 'pages/LandingPage';
-import { Navigation } from 'common/components';
 import { FightPage } from 'pages/FightPage';
+import { CustomizePage } from 'pages/CustomizePage';
+
+import { Navigation } from 'common/components';
 
 interface Route extends RouteProps {
   name: string;
@@ -27,6 +29,16 @@ export const guestRoutes: Route[] = [
       <>
         <Navigation />
         <FightPage />
+      </>
+    )
+  },
+  {
+    name: 'Customize',
+    path: RoutesDefinition.customize,
+    element: (
+      <>
+        <Navigation />
+        <CustomizePage />
       </>
     )
   }

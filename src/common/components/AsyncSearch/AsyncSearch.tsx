@@ -1,9 +1,10 @@
+import uniqby from 'lodash.uniqby';
+import debounce from 'lodash.debounce';
 import { useEffect, useMemo, useState } from 'react';
 import { TextField, Autocomplete, CircularProgress } from '@mui/material/';
 
 import { Card } from 'common/types';
 import { useLazySearchCardsQuery } from 'redux/api';
-import debounce from 'lodash.debounce';
 import { useDispatch } from 'react-redux';
 import { changePokemon } from 'redux/fightSlice';
 
@@ -12,11 +13,13 @@ interface AsyncSearchProps {
 }
 
 export const AsyncSearch = ({ pokemonNumber }: AsyncSearchProps) => {
-  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState<readonly Card[]>([]);
+
   const [value, setValue] = useState<Card | null>(null);
   const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState<readonly Card[]>([]);
   const [searchCards, { isLoading }] = useLazySearchCardsQuery();
 
   const fetch = useMemo(
@@ -27,7 +30,10 @@ export const AsyncSearch = ({ pokemonNumber }: AsyncSearchProps) => {
           callback: (results?: readonly Card[]) => void
         ) => {
           const response = await searchCards({ name: request.input });
-          callback(response?.data?.data || []);
+          const unique = uniqby(response?.data?.data, (el) =>
+            [el.name, el.hp, el.level].join()
+          );
+          callback(unique || []);
         },
         1000
       ),
