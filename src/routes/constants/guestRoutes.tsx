@@ -2,10 +2,21 @@ import { RouteProps } from 'react-router-dom';
 import { RoutesDefinition } from './RoutesDefinition';
 
 import { LandingPage } from 'pages/LandingPage';
+import { Navigation } from 'common/components/Navigation/Navigation';
 
-export const guestRoutes: RouteProps[] = [
+interface Route extends RouteProps {
+  name: string;
+}
+
+export const guestRoutes: Route[] = [
   {
+    name: 'Home',
     path: RoutesDefinition.landing,
-    element: <LandingPage />
+    element: (
+      <>
+        <Navigation />
+        <LandingPage />
+      </>
+    )
   }
 ];
