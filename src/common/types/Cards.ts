@@ -46,6 +46,10 @@ export interface CardsQuery {
   page?: number;
 }
 
+export interface SearchCardsQuery {
+  name: string;
+}
+
 export interface CardQuery {
   id: string;
 }

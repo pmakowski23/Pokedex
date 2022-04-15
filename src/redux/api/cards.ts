@@ -3,7 +3,8 @@ import {
   CardQuery,
   CardResponse,
   CardsResponse,
-  CardsQuery
+  CardsQuery,
+  SearchCardsQuery
 } from 'common/types';
 import baseQuery from 'redux/baseQuery';
 
@@ -17,10 +18,17 @@ export const cardsApi = createApi({
         method: 'GET'
       })
     }),
+    searchCards: builder.query<CardsResponse, SearchCardsQuery>({
+      query: ({ name }) => ({
+        url: `cards?q=name:"${name}"`,
+        method: 'GET'
+      })
+    }),
     getCard: builder.query<CardResponse, CardQuery>({
       query: ({ id }) => ({ url: `cards/${id}`, method: 'GET' })
     })
   })
 });
 
-export const { useGetCardQuery, useGetCardsQuery } = cardsApi;
+export const { useGetCardQuery, useGetCardsQuery, useLazySearchCardsQuery } =
+  cardsApi;

@@ -2,7 +2,7 @@ import { RouteProps } from 'react-router-dom';
 import { RoutesDefinition } from './RoutesDefinition';
 
 import { LandingPage } from 'pages/LandingPage';
-import { Navigation } from 'common/components/Navigation/Navigation';
+import { Navigation } from 'common/components';
 import { FightPage } from 'pages/FightPage';
 
 interface Route extends RouteProps {
