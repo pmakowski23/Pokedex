@@ -31,14 +31,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "https": "set HTTPS=true && react-scripts start",
-    "local": "react-scripts build && serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --fix",
-    "storybook": "start-storybook -p 4002"
+    "cypress:open": "cypress open",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -59,14 +57,19 @@
     ]
   },
   "devDependencies": {
+    "@cypress/react": "^5.12.4",
+    "@cypress/webpack-dev-server": "^1.8.4",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.uniqby": "^4.7.6",
+    "@types/sinonjs__fake-timers": "^8.1.2",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
+    "cypress": "^9.5.4",
     "eslint": "^8.13.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.6.2"
   }

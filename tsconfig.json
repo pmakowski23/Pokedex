@@ -16,7 +16,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["cypress"],
     "baseUrl": "src"
   },
-  "include": ["src", "react-app-env.d.ts"]
+  "include": ["src", "cypress", "react-app-env.d.ts"]
 }
